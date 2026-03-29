@@ -47,3 +47,55 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minigame</title>
+    <style>
+        body {
+            background: black;
+            color: lime;
+            text-align: center;
+            font-family: Arial;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🎮 MINIGAME 🎮</h1>
+<p>Đoán số từ 1 đến 10</p>
+
+<input type="number" id="guess">
+<br>
+<button onclick="play()">Đoán</button>
+
+<h2 id="result"></h2>
+
+<script>
+let random = Math.floor(Math.random() * 10) + 1;
+
+function play() {
+    let user = document.getElementById("guess").value;
+
+    if (user == random) {
+        document.getElementById("result").innerText = "🎉 Trúng rồi!";
+    } else {
+        document.getElementById("result").innerText = "❌ Sai! Số là " + random;
+    }
+}
+</script>
+
+</body>
+</html>
