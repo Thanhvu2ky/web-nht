@@ -37,65 +37,107 @@
     <h1>tôi là 1 thành viên trong server yeamiko cụm chill
     tôi mong mn sẻ vào chs vs tôi</h1>
 
-    <button onclick="sayHello()">Bấm vào sẻ có ip</button>
-
-    <script>
-        function sayHello() {
-            alert("yeamiko.fun");
-        }
-    </script>
-
-</body>
-</html>
-<!DOCTYPE html>
+            <h3>đây là mini game</h3>
+            <!DOCTYPE html>
 <html>
 <head>
-    <title>Minigame</title>
-    <style>
-        body {
-            background: black;
-            color: lime;
-            text-align: center;
-            font-family: Arial;
-        }
+<meta charset="UTF-8">
+<title>Game Hub</title>
 
-        input {
-            padding: 10px;
-            font-size: 18px;
-        }
+<style>
+body {
+    background: black;
+    color: lime;
+    text-align: center;
+    font-family: Arial;
+}
 
-        button {
-            padding: 10px;
-            font-size: 18px;
-            margin-top: 10px;
-        }
-    </style>
+canvas {
+    background: #111;
+    margin-top: 20px;
+}
+
+/* nút điều khiển */
+.controls {
+    margin-top: 15px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 18px;
+    border-radius: 10px;
+    background: black;
+    color: lime;
+    border: 2px solid lime;
+}
+
+button:hover {
+    background: lime;
+    color: black;
+}
+</style>
 </head>
 
 <body>
 
-<h1>🎮 MINIGAME 🎮</h1>
-<p>Đoán số từ 1 đến 10</p>
+<h1>🎮 GAME HUB 🎮</h1>
 
-<input type="number" id="guess">
-<br>
-<button onclick="play()">Đoán</button>
+<!-- MENU -->
+<div id="menu">
+    <button onclick="startSnake()">🐍 Snake</button>
+    <button onclick="randomGame()">🎲 Random</button>
+</div>
 
-<h2 id="result"></h2>
+<!-- GAME -->
+<div id="game" style="display:none;">
+    <h2 id="score">Điểm: 0</h2>
+    <h3 id="high">High Score: 0</h3>
+    <canvas id="canvas" width="400" height="400"></canvas>
+
+    <!-- nút mobile -->
+    <div class="controls">
+        <br>
+        <button onclick="setDir('UP')">⬆️</button><br>
+        <button onclick="setDir('LEFT')">⬅️</button>
+        <button onclick="setDir('DOWN')">⬇️</button>
+        <button onclick="setDir('RIGHT')">➡️</button>
+    </div>
+
+    <br>
+    <button onclick="backMenu()">⬅️ Menu</button>
+</div>
 
 <script>
-let random = Math.floor(Math.random() * 10) + 1;
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
 
-function play() {
-    let user = document.getElementById("guess").value;
+let box = 20;
+let snake, food, direction, score, highScore;
 
-    if (user == random) {
-        document.getElementById("result").innerText = "🎉 Trúng rồi!";
-    } else {
-        document.getElementById("result").innerText = "❌ Sai! Số là " + random;
-    }
+function startSnake() {
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("game").style.display = "block";
+
+    snake = [{x: 200, y: 200}];
+    direction = "RIGHT";
+    score = 0;
+
+    highScore = localStorage.getItem("high") || 0;
+    document.getElementById("high").innerText = "High Score: " + highScore;
+
+    spawnFood();
+
+    clearInterval(gameLoop);
+    gameLoop = setInterval(draw, 120);
 }
-</script>
 
-</body>
-</html>
+function spawnFood() {
+    food = {
+        x: Math.floor(Math.random()*20)*box,
+        y: Math.floor(Math.random()*20)*box
+    };
+}
+
+// keyboard
+document.addEventListener("keydown", (e) =>
