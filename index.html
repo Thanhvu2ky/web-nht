@@ -13,10 +13,21 @@ body {
     overflow-x: hidden;
 
     /* 🖼️ Ảnh nền */
-    background: url("https://thanhvu2ky.github.io/web-nht/bg.jpg") no-repeat center;
+    background: url("bg.jpg") no-repeat center;
     background-size: cover;
 }
-/* nền động */
+
+/* 🌑 lớp tối */
+body::after {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.65);
+    z-index: -2;
+}
+
+/* ✨ hiệu ứng xanh */
 body::before {
     content: "";
     position: fixed;
@@ -51,10 +62,10 @@ h1 {
 }
 
 p {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
-/* card đẹp hơn */
+/* card */
 .card {
     background: rgba(0,0,0,0.8);
     margin: 20px auto;
@@ -62,13 +73,20 @@ p {
     border-radius: 20px;
     max-width: 400px;
     box-shadow: 0 0 15px #00ff00;
-    
+
     opacity: 0;
     transform: translateY(30px);
     animation: fadeUp 1s forwards;
+    transition: 0.3s;
 }
 
-/* delay từng card */
+/* hover card nâng lên */
+.card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 0 25px #00ff00;
+}
+
+/* delay animation */
 .card:nth-child(3) { animation-delay: 0.2s; }
 .card:nth-child(4) { animation-delay: 0.4s; }
 .card:nth-child(5) { animation-delay: 0.6s; }
@@ -93,7 +111,6 @@ p {
     transition: 0.3s;
 }
 
-/* hover xịn hơn */
 .btn:hover {
     background: #00ff00;
     color: black;
@@ -101,7 +118,7 @@ p {
     box-shadow: 0 0 20px #00ff00;
 }
 
-/* nút copy IP */
+/* nút copy */
 .copy-btn {
     margin-top: 10px;
     padding: 10px 20px;
@@ -116,8 +133,60 @@ p {
 footer {
     margin-top: 40px;
     padding: 20px;
-    opacity: 0.6;
+    opacity: 0.7;
 }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🔥 YEAMIKO ULTRA 🔥</h1>
+    <p>Server chill - nơi giải trí của bạn 😎</p>
+
+    <a href="https://dungmc.xyz" class="btn">🚀 Web Server</a>
+    <a href="https://discord.gg/P7TC7QfeR" class="btn">💬 Discord</a>
+
+    <div class="card">
+        <h2>💚 Giới thiệu</h2>
+        <p>
+            Tôi là Thành.<br>
+            Đây là web cá nhân để chia sẻ và giao lưu!
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>🌟 Về server</h2>
+        <p>
+            ✔ Cụm Chill<br>
+            ✔ Cụm SMP<br>
+            ✔ Cộng đồng thân thiện
+        </p>
+    </div>
+
+    <div class="card">
+        <button class="copy-btn" onclick="copyIP()">📋 Copy IP</button>
+    </div>
+
+    <div class="card">
+        <h2>📢 Thông tin</h2>
+        <p>Tham gia để chơi cùng mình nhé 🔥</p>
+    </div>
+
+    <footer>
+        © 2026 Yeamiko Ultra | Made by Thành 😎
+    </footer>
+</div>
+
+<script>
+function copyIP() {
+    navigator.clipboard.writeText("yeamiko.fun");
+    alert("Đã copy IP server!");
+}
+</script>
+
+</body>
+</html>}
 </style>
 </head>
 
