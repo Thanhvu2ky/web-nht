@@ -1,40 +1,121 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>web của nht</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #000000, #00ff00);
-        }
+<meta charset="UTF-8">
+<title>Yeamiko Ultra</title>
 
-        h1 {
-            margin-top: 50px;
-            font-size: 40px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(135deg, #000000, #001a00);
+    color: #00ff00;
+    text-align: center;
+}
 
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            border: none;
-            border-radius: 10px;
-            background: white;
-            color: black;
-            cursor: pointer;
-        }
+/* hiệu ứng nền */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #00ff0022, transparent);
+    animation: moveBg 5s infinite alternate;
+}
 
-        button:hover {
+@keyframes moveBg {
+    from { transform: translateY(0); }
+    to { transform: translateY(-20px); }
+}
+
+/* box chính */
+.container {
+    padding: 50px 20px;
+}
+
+/* tiêu đề */
+h1 {
+    font-size: 40px;
+    text-shadow: 0 0 10px #00ff00, 0 0 30px #00ff00;
+}
+
+/* mô tả */
+p {
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+/* nút */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    border-radius: 15px;
+    background: black;
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.btn:hover {
     background: #00ff00;
     color: black;
-        }
-        }
-    </style>
+    transform: scale(1.1);
+}
+
+/* card */
+.card {
+    background: #111;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 400px;
+    box-shadow: 0 0 15px #00ff00;
+    animation: fade 1s;
+}
+
+@keyframes fade {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+</style>
 </head>
 
 <body>
 
-    <h2>🔥 Chào mừng đến web của Thành 🔥</h2>
-    <h1>tôi là 1 thành viên trong server yeamiko cụm chill
-    tôi mong mn sẻ vào chs vs tôi</h1>
+<div class="container">
+    <h1>🔥 YEAMIKO ULTRA 🔥</h1>
+    <p>Server game + mini game cực chill 😎</p>
 
-            <h3>đây là mini game</h3>
+    <a href="minigame.html" class="btn">🎮 Chơi ngay</a>
+
+    <div class="card">
+        <h2>💚 Giới thiệu</h2>
+        <p>
+            Tôi là Thành, thành viên server Yeamiko.<br>
+            Web này tạo ra để mọi người giải trí, chơi game và chill cùng nhau!
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>🎮 Tính năng</h2>
+        <p>
+            ✔ Mini game trắc nghiệm<br>
+            ✔ Game rắn săn mồi<br>
+            ✔ Giao diện cực đẹp<br>
+            ✔ Chơi được trên điện thoại
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>🚀 Tham gia</h2>
+        <p>
+            Vào server Yeamiko để chơi cùng mình nhé!
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
