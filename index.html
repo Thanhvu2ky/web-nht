@@ -11,9 +11,10 @@ body {
     background: linear-gradient(135deg, #000000, #002200);
     color: #00ff00;
     text-align: center;
+    overflow-x: hidden;
 }
 
-/* hiệu ứng nền */
+/* nền động */
 body::before {
     content: "";
     position: fixed;
@@ -21,48 +22,66 @@ body::before {
     height: 100%;
     background: radial-gradient(circle, #00ff0022, transparent);
     animation: bgMove 6s infinite alternate;
-    
-    z-index: -1;           /* 🔥 QUAN TRỌNG */
-    pointer-events: none;  /* 🔥 QUAN TRỌNG */
-}
-@keyframes bgMove {
-    from { transform: translateY(0); }
-    to { transform: translateY(-30px); }
+    z-index: -1;
+    pointer-events: none;
 }
 
+@keyframes bgMove {
+    from { transform: translateY(0); }
+    to { transform: translateY(-40px); }
+}
+
+/* container */
 .container {
     padding: 50px 20px;
 }
 
+/* tiêu đề */
 h1 {
     font-size: 40px;
     text-shadow: 0 0 10px #00ff00, 0 0 30px #00ff00;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #00ff00; }
+    to { text-shadow: 0 0 25px #00ff00, 0 0 50px #00ff00; }
 }
 
 p {
     opacity: 0.8;
 }
 
-/* card */
+/* card đẹp hơn */
 .card {
-    background: #111;
+    background: rgba(0,0,0,0.8);
     margin: 20px auto;
     padding: 20px;
     border-radius: 20px;
     max-width: 400px;
     box-shadow: 0 0 15px #00ff00;
-    animation: fade 1s;
+    
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s forwards;
 }
 
-@keyframes fade {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
+/* delay từng card */
+.card:nth-child(3) { animation-delay: 0.2s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* nút */
 .btn {
     display: inline-block;
-    margin-top: 20px;
+    margin: 10px;
     padding: 15px 30px;
     border-radius: 15px;
     background: black;
@@ -72,10 +91,30 @@ p {
     transition: 0.3s;
 }
 
+/* hover xịn hơn */
 .btn:hover {
     background: #00ff00;
     color: black;
     transform: scale(1.1);
+    box-shadow: 0 0 20px #00ff00;
+}
+
+/* nút copy IP */
+.copy-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background: #00ff00;
+    color: black;
+    cursor: pointer;
+}
+
+/* footer */
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    opacity: 0.6;
 }
 </style>
 </head>
@@ -86,13 +125,14 @@ p {
     <h1>🔥 YEAMIKO ULTRA 🔥</h1>
     <p>Server chill - nơi giải trí của bạn 😎</p>
 
-<a href="https://dungmc.xyz" class="btn">🚀 Tham gia web server</a>
-    <a href="https://discord.gg/P7TC7QfeR" class="btn">🚀 Tham gia discord</a>
+    <a href="https://dungmc.xyz" class="btn">🚀 Web Server</a>
+    <a href="https://discord.gg/P7TC7QfeR" class="btn">💬 Discord</a>
+
     <div class="card">
         <h2>💚 Giới thiệu</h2>
         <p>
             Tôi là Thành.<br>
-            Đây là web cá nhân của mình để chia sẻ và giao lưu với mọi người!
+            Đây là web cá nhân để chia sẻ và giao lưu!
         </p>
     </div>
 
@@ -106,12 +146,28 @@ p {
     </div>
 
     <div class="card">
-        <h2>📢 Thông tin</h2>
-        <p>
-            Tham gia để chơi cùng mình nhé 🔥
-        </p>
+        <h2>🟢 Trạng thái</h2>
+        <p>Server đang hoạt động</p>
+        <p>👥 Online: 12 người</p>
+        <button class="copy-btn" onclick="copyIP()">📋 Copy IP</button>
     </div>
+
+    <div class="card">
+        <h2>📢 Thông tin</h2>
+        <p>Tham gia để chơi cùng mình nhé 🔥</p>
+    </div>
+
+    <footer>
+        © 2026 Yeamiko Ultra | Made by Thành 😎
+    </footer>
 </div>
+
+<script>
+function copyIP() {
+    navigator.clipboard.writeText("play.yeamiko.com");
+    alert("Đã copy IP server!");
+}
+</script>
 
 </body>
 </html>
