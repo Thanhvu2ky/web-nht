@@ -8,7 +8,7 @@
 body {
     margin: 0;
     font-family: Arial;
-    background: linear-gradient(135deg, #000000, #001a00);
+    background: linear-gradient(135deg, #000000, #002200);
     color: #00ff00;
     text-align: center;
 }
@@ -20,49 +20,25 @@ body::before {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle, #00ff0022, transparent);
-    animation: moveBg 5s infinite alternate;
+    animation: bgMove 6s infinite alternate;
 }
 
-@keyframes moveBg {
+@keyframes bgMove {
     from { transform: translateY(0); }
-    to { transform: translateY(-20px); }
+    to { transform: translateY(-30px); }
 }
 
-/* box chính */
 .container {
     padding: 50px 20px;
 }
 
-/* tiêu đề */
 h1 {
     font-size: 40px;
     text-shadow: 0 0 10px #00ff00, 0 0 30px #00ff00;
 }
 
-/* mô tả */
 p {
-    font-size: 18px;
     opacity: 0.8;
-}
-
-/* nút */
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 15px 30px;
-    border-radius: 15px;
-    background: black;
-    color: #00ff00;
-    border: 2px solid #00ff00;
-    text-decoration: none;
-    font-size: 18px;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: #00ff00;
-    color: black;
-    transform: scale(1.1);
 }
 
 /* card */
@@ -80,6 +56,25 @@ p {
     from {opacity: 0; transform: translateY(20px);}
     to {opacity: 1; transform: translateY(0);}
 }
+
+/* nút */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    border-radius: 15px;
+    background: black;
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #00ff00;
+    color: black;
+    transform: scale(1.1);
+}
 </style>
 </head>
 
@@ -87,32 +82,31 @@ p {
 
 <div class="container">
     <h1>🔥 YEAMIKO ULTRA 🔥</h1>
-    <p>Server game + mini game cực chill 😎</p>
+    <p>Server chill - nơi giải trí của bạn 😎</p>
 
-    <a href="minigame.html" class="btn">🎮 Chơi ngay</a>
+    <a href="#" class="btn">🚀 Tham gia ngay</a>
 
     <div class="card">
         <h2>💚 Giới thiệu</h2>
         <p>
-            Tôi là Thành, thành viên server Yeamiko.<br>
-            Web này tạo ra để mọi người giải trí, chơi game và chill cùng nhau!
+            Tôi là Thành.<br>
+            Đây là web cá nhân của mình để chia sẻ và giao lưu với mọi người!
         </p>
     </div>
 
     <div class="card">
-        <h2>🎮 Tính năng</h2>
+        <h2>🌟 Về server</h2>
         <p>
-            ✔ Mini game trắc nghiệm<br>
-            ✔ Game rắn săn mồi<br>
-            ✔ Giao diện cực đẹp<br>
-            ✔ Chơi được trên điện thoại
+            ✔ Cụm Chill<br>
+            ✔ Cụm SMP<br>
+            ✔ Cộng đồng thân thiện
         </p>
     </div>
 
     <div class="card">
-        <h2>🚀 Tham gia</h2>
+        <h2>📢 Thông tin</h2>
         <p>
-            Vào server Yeamiko để chơi cùng mình nhé!
+            Tham gia để chơi cùng mình nhé 🔥
         </p>
     </div>
 </div>
