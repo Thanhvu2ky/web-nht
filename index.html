@@ -21,8 +21,10 @@ body::before {
     height: 100%;
     background: radial-gradient(circle, #00ff0022, transparent);
     animation: bgMove 6s infinite alternate;
+    
+    z-index: -1;           /* 🔥 QUAN TRỌNG */
+    pointer-events: none;  /* 🔥 QUAN TRỌNG */
 }
-
 @keyframes bgMove {
     from { transform: translateY(0); }
     to { transform: translateY(-30px); }
